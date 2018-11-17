@@ -188,6 +188,11 @@ namespace ProceduralToolkit
             if (calculateNormal)
             {
                 Vector3 normal = Vector3.Cross(vertex1 - vertex0, vertex3 - vertex0).normalized;
+                /* There can be degenerate cases where some vertices are colocated (like a sphere).
+                   This will ensure that if there is a normal, we calculate it.
+                 */
+                if (normal.magnitude == 0f)
+                  normal = -Vector3.Cross(vertex1 - vertex2, vertex3 - vertex2).normalized;
                 return AddQuad(vertex0, vertex1, vertex2, vertex3, normal, normal, normal, normal);
             }
             return _AddQuad(vertex0, vertex1, vertex2, vertex3);
