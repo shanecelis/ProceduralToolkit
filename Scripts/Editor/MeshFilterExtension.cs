@@ -21,7 +21,8 @@ namespace ProceduralToolkit.Editor
             {
                 return;
             }
-            AssetDatabase.CreateAsset(Object.Instantiate(mesh), path);
+            // AssetDatabase.CreateAsset(Object.Instantiate(mesh), path);
+            AssetDatabase.CreateAsset(mesh, path);
         }
 
         [MenuItem(menuPath, true)]
